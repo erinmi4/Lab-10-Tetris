@@ -41,6 +41,8 @@ public class Movement {
      * Attempts to move the current Tetromino by a shift of deltaX and deltaY.
      * If the Tetromino cannot move and will collide with a boundary or existing piece,
      * it is placed at its current position and nullified so a new Tetromino can spawn.
+     * 尝试通过移动 deltaX 和 deltaY 的偏移量来移动当前的 Tetromino（俄罗斯方块）。
+     * 如果 Tetromino 无法移动并且会与边界或现有的方块碰撞，它将被放置在当前位置并置空，以便生成一个新的 Tetromino。
      * @param deltaX
      * @param deltaY
      */
@@ -65,6 +67,8 @@ public class Movement {
     /**
      * Checks whether moving the current Tetromino by a shift of deltaX and deltaY
      * is valid, i.e. within bounds and does not collide with other pieces.
+     * 检查将当前 Tetromino（俄罗斯方块）按 deltaX 和 deltaY 的偏移量移动是否有效，
+     * 即是否在边界内并且不会与其他方块碰撞。
      * @param deltaX
      * @param deltaY
      * @return a boolean representing if the move is possible or not
@@ -99,6 +103,8 @@ public class Movement {
     /**
      * Moves the current Tetromino down one tile, if not able to move down,
      * set the block in place and allow for a new Tetromino to be spawned.
+     * 将当前的 Tetromino（俄罗斯方块）向下移动一格，
+     * 如果无法向下移动，则将方块固定在当前位置，并允许生成一个新的 Tetromino。
      */
     public void dropDown() {
         Tetromino t = tetris.getCurrentTetromino();
@@ -119,6 +125,7 @@ public class Movement {
      * Checks whether rotating the current Tetromino is valid,
      * i.e. it will remain within bounds and does not rotate/collide into
      * other pieces.
+     * 检查当前 Tetromino（俄罗斯方块）的旋转是否有效，即它是否仍然在边界内，并且不会在旋转时与其他方块碰撞。
      * @param newShape
      * @return a boolean representing if the rotation is possible or not
      */
@@ -150,6 +157,8 @@ public class Movement {
     /**
      * Attempts to rotate the current Tetromino by the given direction r (left or right).
      * If the Tetromino cannot rotate, it will remain in its current orientation.
+     * 尝试按照给定的方向 r（左或右）旋转当前的 Tetromino（俄罗斯方块）。
+     * 如果 Tetromino 无法旋转，它将保持当前的方向不变。
      * @param r
      */
     public void rotate(Rotation r) {
