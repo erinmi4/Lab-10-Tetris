@@ -7,6 +7,10 @@ import tileengine.Tileset;
 
 import java.util.*;
 
+import static edu.princeton.cs.algs4.StdDraw.hasNextKeyTyped;
+import static edu.princeton.cs.algs4.StdDraw.isKeyPressed;
+import static java.awt.event.KeyEvent.*;
+
 /**
  *  Provides the logic for Tetris.
  *
@@ -79,18 +83,27 @@ public class Tetris {
     /**
      * Updates the board based on the user input. Makes the appropriate moves
      * depending on the user's input.
+     * 根据用户的输入来更新板子的状态
      */
     private void updateBoard() {
         // Grabs the current piece.
         Tetromino t = currentTetromino;
         if (actionDeltaTime() > 1000) {
-            movement.dropDown();
+            movement.dropDown();//每经过一秒钟都会下掉
             resetActionTimer();
-            Tetromino.draw(t, board, t.pos.x, t.pos.y);
+            Tetromino.draw(t, board, t.pos.x, t.pos.y);//将该图形绘制在板子上
             return;
         }
 
         // TODO: Implement interactivity, so the user is able to input the keystrokes to move
+        if (hasNextKeyTyped()) {
+
+            if (isKeyPressed(VK_A)) movement.tryMove(-1,0);
+            if (isKeyPressed(VK_S)) movement.dropDown();
+            if (isKeyPressed(VK_D)) movement.tryMove(1,0);
+            if (isKeyPressed(VK_Q)) movement.rotateLeft();
+            if (isKeyPressed(VK_W)) movement.rotateRight();
+        }
         //  the tile and rotate the tile. You'll want to use some provided helper methods here.
 
 

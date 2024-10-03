@@ -84,6 +84,8 @@ public enum Tetromino {
     /**
      * Draws the piece at the given coordinates of the given board. (x,y) = 0,0 is bottom-left.
      * Does not do bounds-checking.
+     * 在给定棋盘的指定坐标处绘制方块，(x, y) = 0,0 为左下角。
+     * 不进行边界检查。
      */
     public static void draw(Tetromino t, TETile[][] board, int bx, int by) {
         for (int tx = 0; tx < t.width; tx++) {
