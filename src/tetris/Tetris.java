@@ -117,22 +117,49 @@ public class Tetris {
      */
     private void incrementScore(int linesCleared) {
         // TODO: Increment the score based on the number of lines cleared.
-
+        switch (linesCleared) {
+            case 1 :
+                score+=100;
+            case 2:
+                score+=300;
+            case 3 :
+                score+=500;
+            case 4:
+                score+=800;
+            default:
+                break;
+        }
     }
 
     /**
      * Clears lines/rows on the provided tiles/board that are horizontally filled.
      * Repeats this process for cascading effects and updates score accordingly.
+     * 主要是不知道对于空白的处理是否恰当
      * @param tiles
      */
     public void clearLines(TETile[][] tiles) {
         // Keeps track of the current number lines cleared
-        int linesCleared = 0;
-
         // TODO: Check how many lines have been completed and clear it the rows if completed.
+    // 将整个棋盘都转化为字符串
+    String lines = tiles.toString();
+    String[] rows = lines.split("\n");  // 以换行符切割每行
+    int linesCleared = 0;  // 清除的行数
+    int j = 0;  // 用于遍历行
 
+    for (String row : rows) {  // 遍历每一行
+        boolean isEmptyRow = true;
+        for (char ch : row.toCharArray()) {  // 遍历每一行的每个字符
+            if (ch != ' ') {  // 如果该字符不是空白，说明该行不是空行
+                isEmptyRow = false;
+                break;  // 直接跳出循环，因为该行不是空行
+            }
+    }
+        if (isEmptyRow) {
+            linesCleared++;  // 记录空行的数量
+        }
+}
         // TODO: Increment the score based on the number of lines cleared.
-
+        incrementScore(linesCleared);
         fillAux();
     }
 
@@ -286,6 +313,7 @@ public class Tetris {
 
     /**
      * Copies over the tiles from the game board to the auxiliary board.
+     * 从游戏板复制贴图到辅助板。
      */
     public void fillAux() {
         copyArray(board, auxiliary);
